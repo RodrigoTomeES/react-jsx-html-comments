@@ -39,7 +39,7 @@ class ReactComment extends window.HTMLElement {
 window.customElements.define('react-comment', ReactComment)
 ```
 
-To include a comment in your JSX or React component, simply include the `<react-comment>` tag with the comment-text as content and import reactComment.js.
+To include a comment in your JSX or React component, simply include the `<react-comment>` tag with the comment-text as content and import index.js (you can rename the file) or use the npm package react-jsx-html-comments.
 ### Import
 ```javascript
 import 'reactComponent'
