@@ -1,2 +1,63 @@
-# react-jsx-html-comments
-Enable HTML comments and conditional IE comments in React components and JSX using a Web Component (W3C Custom Element). 
+# React / JSX HTML Comments
+Enable HTML comments and conditional IE comments in React components and JSX using a [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
+
+This repository is intended to share a solution to include native HTML comments in React components and JSX. It uses a Web Component (W3C Custom Element) to transform text to a native HTML comment.
+
+The solution use the native Custom Elements V1 API so it does **NOT** depends on [document.registerElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/registerElement) that requires a polyfill for most browsers, e.g. [WebReflection/document-register-element](https://github.com/WebReflection/document-register-element).
+
+You can read more about Web Components at [www.webcomponents.org](http://webcomponents.org/), [facebook.github.io/react/docs/webcomponents.html](https://facebook.github.io/react/docs/webcomponents.html) and [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
+
+Include the following javascript in your application to enable the `<react-comment>` Web Component. 
+
+```javascript
+/**
+ * <react-comment> Web Component
+ *
+ * @usage
+ *  <react-comment>Comment-text, e.g. [if lte IE 9]><script ... /><![endif]</react-comment>
+
+ * @result
+ *  <!--Comment-text, e.g. [if lte IE 9]><script ... /><![endif]-->
+ */
+
+class ReactComment extends window.HTMLElement {
+  get name () {
+    return 'React HTML Comment'
+  }
+
+  connectedCallback () {
+    /**
+    * Firefox fix, is="null" prevents attachedCallback
+    * @link https://github.com/WebReflection/document-register-element/issues/22
+    */
+    this.is = ''
+    this.removeAttribute('is')
+    this.outerHTML = '<!--' + this.textContent + '-->'
+  }
+}
+
+window.customElements.define('react-comment', ReactComment)
+```
+
+To include a comment in your JSX or React component, simply include the `<react-comment>` tag with the comment-text as content and import reactComment.js.
+### Import
+```
+import 'reactComponent'
+```
+
+### JSX
+```jsx
+<footer>Copyright {year}, Website.com</footer>
+<react-comment>Page loaded in {loadtime} seconds</react-comment>
+```
+
+### React component / element
+```javascript
+var MyComponent = React.createClass({
+ render: function() {
+  return React.createElement('react-comment',{},'This is sample comment text.');
+ }
+});
+```
+
+This solution is an update of [optimalisatie](https://github.com/optimalisatie)'s code, you can see the original code [here](https://github.com/optimalisatie/react-jsx-html-comments)
