@@ -41,7 +41,7 @@ window.customElements.define('react-comment', ReactComment)
 
 To include a comment in your JSX or React component, simply include the `<react-comment>` tag with the comment-text as content and import reactComment.js.
 ### Import
-```
+```javascript
 import 'reactComponent'
 ```
 
