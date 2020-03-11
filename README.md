@@ -1,3 +1,6 @@
+[![NPM](https://img.shields.io/npm/l/react-jsx-html-comments?style=flat)](https://github.com/RodrigoTomeES/react-jsx-html-comments/blob/master/LICENSE)
+[![npm version](https://badge.fury.io/js/react-jsx-html-comments.svg)](https://badge.fury.io/js/react-jsx-html-comments)
+
 # React / JSX HTML Comments
 Enable HTML comments and conditional IE comments in React components and JSX using a [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 
