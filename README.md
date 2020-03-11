@@ -39,19 +39,44 @@ class ReactComment extends window.HTMLElement {
 window.customElements.define('react-comment', ReactComment)
 ```
 
-To include a comment in your JSX or React component, simply include the `<react-comment>` tag with the comment-text as content and import index.js (you can rename the file) or use the npm package react-jsx-html-comments.
-### Import
-```javascript
-import 'reactComponent'
+To include a comment in your JSX or React component, simply include the `<react-comment>` tag with the comment-text as content and import index.js (you can rename the file) or use the npm package [react-jsx-html-comments](https://www.npmjs.com/package/react-jsx-html-comments).
+
+### Install
+#### NPM
+Use the following command in your directory to use and save the npm package. This will put index.js inside `node_modules/react-jsx-html-comments/` of your project.
+```
+npm install --save react-jsx-html-comments
 ```
 
-### JSX
+#### Vanilla JavaScript
+Download the index.js file (rename if you want) and save it in your proyect.
+
+### Import
+#### NPM
+If you're working with a tool like Browserify, Webpack, RequireJS, etc, you can import the script at some point before you need to use the API.
+
+```javascript
+import 'react-jsx-html-comments' // ES2015
+// or
+require('react-jsx-html-comments') // CommonJS
+// or
+define(['react-jsx-html-comments'], function() {}) // AMD
+```
+
+#### Vanilla JavaScript
+If you're not using a module system, just place index.js (rename if you want) somewhere where it will be served by your server, then put:
+```html
+<script src="/path/to/index.js"></script>
+```
+
+### Use
+#### JSX
 ```jsx
 <footer>Copyright {year}, Website.com</footer>
 <react-comment>Page loaded in {loadtime} seconds</react-comment>
 ```
 
-### React component / element
+#### React component / element
 ```javascript
 var MyComponent = React.createClass({
  render: function() {
@@ -60,4 +85,4 @@ var MyComponent = React.createClass({
 });
 ```
 
-This solution is an update of [optimalisatie](https://github.com/optimalisatie)'s code, you can see the original code [here](https://github.com/optimalisatie/react-jsx-html-comments)
+This solution is a migration of the code from [optimalisatie](https://github.com/optimalisatie) to the new Custom Elements API V1 that does **NOT** require polyfill, you can see the original code [here](https://github.com/optimalisatie/react-jsx-html-comments).
